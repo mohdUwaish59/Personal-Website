@@ -59,13 +59,13 @@ export function AboutSection() {
               where I developed a passion for creating digital experiences that are both functional and beautiful.
             </p>
             <p className="text-muted-foreground mb-6">
-              I'm proficient in JavaScript, TypeScript, React, Next.js, Node.js,
+              I am proficient in JavaScript, TypeScript, React, Next.js, Node.js,
               Python, and various other modern technologies. I believe in writing clean,
               maintainable code and staying up-to-date with the latest industry
               trends and best practices.
             </p>
             <p className="text-muted-foreground mb-8">
-              When I'm not coding, you can find me hiking, reading science fiction,
+              When Iam not coding, you can find me hiking, reading science fiction,
               or experimenting with new recipes in the kitchen.
             </p>
 

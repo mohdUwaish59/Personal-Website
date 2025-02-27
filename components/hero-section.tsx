@@ -19,7 +19,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-primary">Michael Johnson</span>
+              Hi, I am <span className="text-primary">Michael Johnson</span>
             </h1>
           </motion.div>
 

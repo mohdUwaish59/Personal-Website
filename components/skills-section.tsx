@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Code, Database, Layout, Server, Settings, Smartphone } from "lucide-react";
 
@@ -55,8 +54,8 @@ export function SkillsSection() {
           <h2 className="text-3xl font-bold mb-2">My Skills</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I've worked with a variety of technologies and tools throughout my career.
-            Here's a breakdown of my technical skills and proficiency levels.
+            I have worked with a variety of technologies and tools throughout my career.
+            Here is a breakdown of my technical skills and proficiency levels.
           </p>
         </motion.div>
 
@@ -92,7 +91,6 @@ export function SkillsSection() {
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
                     </motion.div>
                   ))}
                 </div>
@@ -116,7 +114,6 @@ export function SkillsSection() {
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
                     </motion.div>
                   ))}
                 </div>
@@ -140,7 +137,6 @@ export function SkillsSection() {
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
                     </motion.div>
                   ))}
                 </div>
@@ -164,7 +160,6 @@ export function SkillsSection() {
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
                     </motion.div>
                   ))}
                 </div>
