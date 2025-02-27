@@ -19,13 +19,17 @@ export async function getSortedPosts() {
           title: data.title,
           excerpt: data.excerpt,
           coverImage: data.coverImage || "/default-cover.jpg",
-          publishedAt: data.date ? new Date(data.date).toISOString() : null, // ✅ Fixed date
           author: data.author || { name: "Unknown", image: "/default-avatar.jpg" },
           tags: data.tags || [],
           readingTime: data.readingTime || 5,
+          publishedAt: data.publishedAt ? new Date(data.publishedAt).toISOString() : new Date().toISOString(), // ✅ Ensure it's always a valid date
         };
       })
-      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+      .sort((a, b) => {
+        const dateA = new Date(a.publishedAt).getTime();
+        const dateB = new Date(b.publishedAt).getTime();
+        return dateB - dateA; // ✅ Sort in descending order
+      });
 
     console.log("✅ getSortedPosts() returned:", posts); // Debugging Log
     return posts; // Ensure an array is returned
