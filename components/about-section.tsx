@@ -33,8 +33,8 @@ export function AboutSection() {
             <Card className="overflow-hidden h-full">
               <CardContent className="p-0 h-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                  alt="Michael Johnson"
+                  src="assets/profile.jpg"
+                  alt="Mohd Uwaish"
                   width={500}
                   height={500}
                   className="object-cover h-full w-full"
@@ -50,37 +50,32 @@ export function AboutSection() {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Full Stack Developer & UI/UX Enthusiast
+              Software Engineer & Data Science Enthusiast
             </h3>
             <p className="text-muted-foreground mb-6">
-              With over 7 years of experience in web development, I specialize in
-              building modern, responsive, and user-friendly applications. My
-              journey in tech began when I was studying Computer Science at Stanford University,
-              where I developed a passion for creating digital experiences that are both functional and beautiful.
+              I am a Master's student in Applied Computer Science with a specialization in Data Science at Georg-August-Universität Göttingen. 
+              I have experience in full-stack development, data science, and machine learning, working on innovative solutions across multiple domains.
             </p>
             <p className="text-muted-foreground mb-6">
-              I am proficient in JavaScript, TypeScript, React, Next.js, Node.js,
-              Python, and various other modern technologies. I believe in writing clean,
-              maintainable code and staying up-to-date with the latest industry
-              trends and best practices.
+              My expertise includes technologies like Python, JavaScript, Django, Flask, React, and Next.js. I am passionate about building scalable web applications, 
+              developing data-driven insights, and deploying machine learning models for real-world applications.
             </p>
             <p className="text-muted-foreground mb-8">
-              When Iam not coding, you can find me hiking, reading science fiction,
-              or experimenting with new recipes in the kitchen.
+              In my free time, I enjoy exploring new technologies, working on open-source projects, and engaging with the developer community.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div>
                 <h4 className="font-semibold mb-2">Name:</h4>
-                <p className="text-muted-foreground">Michael Johnson</p>
+                <p className="text-muted-foreground">Mohd Uwaish</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Email:</h4>
-                <p className="text-muted-foreground">michael.johnson@example.com</p>
+                <p className="text-muted-foreground">mohd.uwaish@stud.uni-goettingen.de</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Location:</h4>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Göttingen, Germany</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Availability:</h4>

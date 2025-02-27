@@ -49,20 +49,43 @@ export function ContactSection() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(values);
-      setIsSubmitting(false);
-      form.reset();
-      
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
-    }, 1500);
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "There was a problem sending your message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -100,7 +123,7 @@ export function ContactSection() {
                       <MapPin className="h-5 w-5 mr-3 text-primary mt-0.5" />
                       <div>
                         <h4 className="font-medium">Location</h4>
-                        <p className="text-muted-foreground">San Francisco, CA</p>
+                        <p className="text-muted-foreground">Göttingen, Germany</p>
                       </div>
                     </div>
                     
@@ -108,7 +131,7 @@ export function ContactSection() {
                       <Mail className="h-5 w-5 mr-3 text-primary mt-0.5" />
                       <div>
                         <h4 className="font-medium">Email</h4>
-                        <p className="text-muted-foreground">michael.johnson@example.com</p>
+                        <p className="text-muted-foreground">mohd.uwaish@stud.uni-goettingen.de</p>
                       </div>
                     </div>
                     
@@ -116,7 +139,7 @@ export function ContactSection() {
                       <Phone className="h-5 w-5 mr-3 text-primary mt-0.5" />
                       <div>
                         <h4 className="font-medium">Phone</h4>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                        <p className="text-muted-foreground">+49 15510 186990</p>
                       </div>
                     </div>
                   </div>

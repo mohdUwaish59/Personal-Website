@@ -25,7 +25,7 @@ export function Footer() {
             className="mb-6 md:mb-0"
           >
             <Link href="#home" className="text-2xl font-bold">
-              Michael<span className="text-primary">Johnson</span>
+              Mohd<span className="text-primary">Uwaish</span>
             </Link>
             <p className="text-muted-foreground mt-2 max-w-md">
               Building exceptional digital experiences with modern technologies.

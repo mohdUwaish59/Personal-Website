@@ -19,7 +19,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi, I am <span className="text-primary">Michael Johnson</span>
+              Hi, I am <span className="text-primary">Mohd Uwaish</span>
             </h1>
           </motion.div>
 
@@ -29,7 +29,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-foreground/80">
-              Full Stack Developer
+              Full Stack AI Engineer
             </h2>
           </motion.div>
 
@@ -39,9 +39,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <p className="text-lg md:text-xl mb-8 max-w-2xl text-muted-foreground">
-              I build exceptional digital experiences with modern technologies.
-              Passionate about creating intuitive, high-performance applications
-              that solve real-world problems.
+              I specialize in developing fullstack web applications, RAG systems and leveraging data science 
+              to solve real-world problems. Currently pursuing my MSc in Applied Computer Science 
+              with a specialization in Data Science at Georg-August-Universität Göttingen.
             </p>
           </motion.div>
 
@@ -66,19 +66,19 @@ export function HeroSection() {
             className="flex gap-4 mt-8"
           >
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/mjohnson" target="_blank" rel="noopener noreferrer">
+              <Link href="https://github.com/mohdUwaish59" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com/in/michaeljohnson" target="_blank" rel="noopener noreferrer">
+              <Link href="https://linkedin.com/in/muwaish5" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:michael.johnson@example.com">
+              <Link href="mailto:mohd.uwaish@stud.uni-goettingen.de">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </Link>

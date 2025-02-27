@@ -86,8 +86,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         {/* ✅ Render Markdown as HTML */}
         <div
           dangerouslySetInnerHTML={{ __html: post.content }}
-          className="prose prose-lg dark:prose-invert mt-6"
+          className="prose prose-lg dark:prose-invert mt-6 scroll-smooth [&_h2]:scroll-mt-24 [&_h3]:scroll-mt-24"
         ></div>
+
       </article>
 
       {/* ✅ Sidebar (On This Page Navigation) */}
