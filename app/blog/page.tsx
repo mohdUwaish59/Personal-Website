@@ -1,23 +1,41 @@
 "use client";
 
-import { getSortedPosts } from "@/lib/blog";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+
+// ✅ Define the expected type of a blog post
+type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  publishedAt: string;
+  author: {
+    name: string;
+    image: string;
+  };
+  tags: string[];
+  readingTime: number;
+};
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]); // ✅ Ensure correct typing
 
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch("/api/blog");
-      const data = await res.json();
-      setPosts(data);
+      try {
+        const res = await fetch("/api/blog");
+        const data: BlogPost[] = await res.json(); // ✅ Ensure the correct type
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     }
     fetchPosts();
   }, []);
@@ -25,7 +43,6 @@ export default function BlogPage() {
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
-        {/* Page Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +54,6 @@ export default function BlogPage() {
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </motion.div>
 
-        {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, index) => (
             <motion.div
@@ -49,7 +65,6 @@ export default function BlogPage() {
             >
               <Link href={`/blog/${post.slug}`} passHref>
                 <Card className="h-full overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-                  {/* Image with Hover Effect */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.coverImage}
@@ -59,9 +74,7 @@ export default function BlogPage() {
                     />
                   </div>
 
-                  {/* Blog Metadata */}
                   <CardHeader className="pb-2">
-                    {/* Tags Display */}
                     <div className="flex flex-wrap gap-2 mb-2">
                       {post.tags.slice(0, 2).map((tag) => (
                         <Badge key={tag} variant="secondary" className="font-normal">
@@ -74,12 +87,10 @@ export default function BlogPage() {
                     </h3>
                   </CardHeader>
 
-                  {/* Blog Excerpt */}
                   <CardContent className="pb-2">
                     <p className="text-muted-foreground line-clamp-3">{post.excerpt}</p>
                   </CardContent>
 
-                  {/* Footer with Date & Reading Time */}
                   <CardFooter className="flex justify-between items-center pt-2">
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4 mr-1" />
