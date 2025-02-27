@@ -2,22 +2,40 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Calendar, ArrowRight } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 import { useState, useEffect } from "react";
 
+// ✅ Define the Blog Post type explicitly
+type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  publishedAt: string;
+  author: {
+    name: string;
+    image: string;
+  };
+  tags: string[];
+  readingTime: number;
+};
+
 export function BlogSection() {
-  const [latestPosts, setLatestPosts] = useState([]);
+  const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]); // ✅ Type the state properly
 
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch("/api/blog");
-      const posts = await res.json();
-      setLatestPosts(posts);
+      try {
+        const res = await fetch("/api/blog"); // ✅ Ensure this API returns BlogPost[]
+        const data: BlogPost[] = await res.json(); // ✅ Explicitly cast response to BlogPost[]
+        setLatestPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     }
     fetchPosts();
   }, []);
@@ -42,14 +60,14 @@ export function BlogSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {latestPosts.map((post, index) => (
             <motion.div
-              key={post.slug}
+              key={post.slug} // ✅ No more TypeScript error here
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Link href={`/blog/${post.slug}`} passHref> {/* ✅ Fixed URL */}
-                <Card className="h-full overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+              <Link href={`/blog/${post.slug}`} passHref>
+                <Card className="h-full overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.coverImage}
@@ -88,21 +106,6 @@ export function BlogSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <Button asChild size="lg">
-            <Link href="/blog" passHref> {/* ✅ Fixed "View All Articles" Button */}
-              View All Articles
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
