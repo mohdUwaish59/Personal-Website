@@ -25,6 +25,30 @@ interface TimelineContentProps {
   className?: string;
 }
 
+// Define the type for the compound component
+interface TimelineComponent
+  extends React.ForwardRefExoticComponent<
+    React.HTMLAttributes<HTMLDivElement> & 
+    TimelineProps & 
+    React.RefAttributes<HTMLDivElement>
+  > {
+  Item: React.ForwardRefExoticComponent<
+    React.HTMLAttributes<HTMLDivElement> & 
+    TimelineItemProps & 
+    React.RefAttributes<HTMLDivElement>
+  >;
+  Point: React.ForwardRefExoticComponent<
+    React.HTMLAttributes<HTMLDivElement> & 
+    TimelinePointProps & 
+    React.RefAttributes<HTMLDivElement>
+  >;
+  Content: React.ForwardRefExoticComponent<
+    React.HTMLAttributes<HTMLDivElement> & 
+    TimelineContentProps & 
+    React.RefAttributes<HTMLDivElement>
+  >;
+}
+
 const Timeline = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & TimelineProps
@@ -36,7 +60,8 @@ const Timeline = React.forwardRef<
   >
     {children}
   </div>
-));
+)) as TimelineComponent;  // Cast to the compound component type
+
 Timeline.displayName = "Timeline";
 
 const TimelineItem = React.forwardRef<
@@ -87,6 +112,7 @@ const TimelineContent = React.forwardRef<
 ));
 TimelineContent.displayName = "TimelineContent";
 
+// Assign subcomponents
 Timeline.Item = TimelineItem;
 Timeline.Point = TimelinePoint;
 Timeline.Content = TimelineContent;
