@@ -77,7 +77,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </div>
         )}
 
-        {/* ✅ Blog Title & Metadata */}
         <h1 className="text-4xl font-bold">{post.metadata.title}</h1>
         <p className="text-gray-600 mt-2">
           {new Date(post.metadata.date).toLocaleDateString()} • {post.metadata.readingTime} min read
