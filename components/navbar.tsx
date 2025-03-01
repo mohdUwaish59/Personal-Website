@@ -49,7 +49,7 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            Michael<span className="text-primary">Johnson</span>
+            Mohd<span className="text-primary">Uwaish</span>
           </motion.div>
         </Link>
 
