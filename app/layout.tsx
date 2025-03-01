@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Mohd Uwaish | Portfolio',
   description: 'Personal portfolio showcasing my work and skills as a Full Stack AI Engineer',
+  icons: {
+    icon: "/favicon/favicon.png", // Path to your PNG favicon
+  },
 };
 
 export default function RootLayout({

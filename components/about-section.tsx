@@ -7,6 +7,27 @@ import { Download } from "lucide-react";
 import Image from "next/image";
 
 export function AboutSection() {
+  const handleDownloadResume = async () => {
+    try {
+      const response = await fetch("/api/resume");
+  
+      if (!response.ok) {
+        throw new Error("Failed to download resume");
+      }
+  
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Resume_Mohd_Uwaish.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+    }
+  };
+  
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -83,7 +104,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <Button size="lg">
+            <Button size="lg" onClick={handleDownloadResume}>
               <Download className="mr-2 h-4 w-4" /> Download Resume
             </Button>
           </motion.div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -10,14 +11,18 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,18 +44,18 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="#home" className="text-2xl font-bold">
+        <Link href="/" className="text-2xl font-bold">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            Mohd<span className="text-primary">Uwaish</span>
+            Michael<span className="text-primary">Johnson</span>
           </motion.div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
+          {isHomePage && navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -64,6 +69,19 @@ export function Navbar() {
               </motion.div>
             </Link>
           ))}
+          {!isHomePage && (
+            <Link
+              href="/"
+              className="text-foreground/80 hover:text-foreground transition-colors"
+            >
+              <motion.div
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                Home
+              </motion.div>
+            </Link>
+          )}
           <ThemeToggle />
         </nav>
 
@@ -91,16 +109,26 @@ export function Navbar() {
           transition={{ duration: 0.3 }}
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navItems.map((item) => (
+            {isHomePage ? (
+              navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-foreground/80 hover:text-foreground py-2 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))
+            ) : (
               <Link
-                key={item.name}
-                href={item.href}
+                href="/"
                 className="text-foreground/80 hover:text-foreground py-2 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item.name}
+                Home
               </Link>
-            ))}
+            )}
           </div>
         </motion.div>
       )}
