@@ -221,7 +221,7 @@ export function SkillsSection() {
             </Card>
           </TabsContent>
         </Tabs>
-
+         {/* 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export function SkillsSection() {
               <p className="text-muted-foreground">Cups of Coffee</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
