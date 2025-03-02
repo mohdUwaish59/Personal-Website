@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Code } from "lucide-react";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -96,38 +96,62 @@ export function HeroSection() {
         <ArrowDown className="h-6 w-6 text-primary" />
       </motion.div>
 
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 -z-10 opacity-20 dark:opacity-10">
-        <svg
-          width="600"
-          height="600"
-          viewBox="0 0 600 600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      {/* Enhanced background decoration */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-primary/5 to-background" />
+        
+        {/* Animated circles */}
+        <motion.div 
+          className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        
+        <motion.div 
+          className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+        />
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.075)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.075)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+        
+        {/* Floating tech elements */}
+        <motion.div 
+          className="absolute top-1/4 right-1/4"
+          animate={{ 
+            y: [0, -15, 0],
+            rotate: [0, 5, 0],
+          }}
+          transition={{ duration: 6, repeat: Infinity }}
         >
-          <g clipPath="url(#clip0_123_52)">
-            <path
-              d="M600 0H0V600H600V0Z"
-              fill="url(#paint0_radial_123_52)"
-            />
-          </g>
-          <defs>
-            <radialGradient
-              id="paint0_radial_123_52"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(300 300) rotate(90) scale(300)"
-            >
-              <stop stopColor="currentColor" />
-              <stop offset="1" stopColor="currentColor" stopOpacity="0" />
-            </radialGradient>
-            <clipPath id="clip0_123_52">
-              <rect width="600" height="600" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
+          <div className="w-16 h-16 border border-primary/20 rounded-lg flex items-center justify-center text-primary/40">
+            <Code className="w-8 h-8" />
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          className="absolute bottom-1/3 left-1/4"
+          animate={{ 
+            y: [0, 15, 0],
+            rotate: [0, -5, 0],
+          }}
+          transition={{ duration: 7, repeat: Infinity, delay: 1 }}
+        >
+          <div className="w-12 h-12 border border-primary/20 rounded-full flex items-center justify-center text-primary/40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

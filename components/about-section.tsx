@@ -27,7 +27,6 @@ export function AboutSection() {
       console.error("Error downloading resume:", error);
     }
   };
-  
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -55,7 +54,7 @@ export function AboutSection() {
               <CardContent className="p-0 h-full">
                 <Image
                   src="assets/profile.jpg"
-                  alt="Mohd Uwaish"
+                  alt="MohammadUwaish"
                   width={500}
                   height={500}
                   className="object-cover h-full w-full"
@@ -71,28 +70,28 @@ export function AboutSection() {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Software Engineer & Data Science Enthusiast
+              Full Stack Developer & UI/UX Enthusiast
             </h3>
             <p className="text-muted-foreground mb-6">
-              I am a Master's student in Applied Computer Science with a specialization in Data Science at Georg-August-Universität Göttingen. 
-              I have experience in full-stack development, data science, and machine learning, working on innovative solutions across multiple domains.
+            I am a Master's student in Applied Computer Science with a specialization in Data Science at Georg-August-Universität Göttingen. 
+            I have experience in full-stack development, data science, and machine learning, working on innovative solutions across multiple domains.
             </p>
             <p className="text-muted-foreground mb-6">
-              My expertise includes technologies like Python, JavaScript, Django, Flask, React, and Next.js. I am passionate about building scalable web applications, 
-              developing data-driven insights, and deploying machine learning models for real-world applications.
+            My expertise includes technologies like Python, JavaScript, Django, Flask, React, and Next.js. I am passionate about RAG Systems, building scalable web applications, 
+            developing data-driven insights, and deploying machine learning models for real-world applications.
             </p>
             <p className="text-muted-foreground mb-8">
-              In my free time, I enjoy exploring new technologies, working on open-source projects, and engaging with the developer community.
+            In my free time, I enjoy exploring new technologies, working on open-source projects, and engaging with the developer community.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div>
                 <h4 className="font-semibold mb-2">Name:</h4>
                 <p className="text-muted-foreground">Mohd Uwaish</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Email:</h4>
-                <p className="text-muted-foreground">mohd.uwaish@stud.uni-goettingen.de</p>
+                <p className="text-muted-foreground break-words">mohd.uwaish@stud.uni-goettingen.de</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Location:</h4>

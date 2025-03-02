@@ -11,30 +11,57 @@ import Link from "next/link";
 const projects = [
   {
     id: 1,
-    title: "HealthTrack Pro",
-    description: "A comprehensive health tracking platform with personalized analytics, meal planning, and fitness routines.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
-    tags: ["React", "TypeScript", "Node.js", "MongoDB", "Express"],
-    liveUrl: "https://healthtrackpro.example.com",
-    githubUrl: "https://github.com/mjohnson/healthtrackpro",
+    title: "geoRAG",
+    description: "A Retrieval-Augmented Generation (RAG)-based system designed to extract information from georock database for geochemistry research papers efficiently using hybrid retrieval techniques.",
+    image: "/project/geoRAG.jpg",
+    tags: ["Retrieval-Augmented Generation", "VectorRAG", "GraphRAG", "LLMs", "Machine Learning"],
+    liveUrl: "https://georag-app.streamlit.app/",
+    githubUrl: "https://github.com/",
   },
   {
     id: 2,
-    title: "TaskFlow",
-    description: "A collaborative task management application with real-time updates, task assignment, and progress tracking.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-    liveUrl: "https://taskflow.example.com",
-    githubUrl: "https://github.com/mjohnson/taskflow",
+    title: "Browser Extension for Image Sensitivity Prediction",
+    description: "A ReactJS-based browser extension that predicts image sensitivity for Facebook, Twitter, and Instagram using a trained deep learning model deployed via Flask API.",
+    image: "/project/meeting.png",
+    tags: ["React", "Flask", "Machine Learning", "REST API", "Computer Vision"],
+    liveUrl: "https://github.com/mohdUwaish59/image-sensitivity-extension",
+    githubUrl: "https://github.com/mohdUwaish59/image-sensitivity-extension",
   },
   {
     id: 3,
-    title: "EcoMarket",
-    description: "An e-commerce platform for sustainable and eco-friendly products with integrated carbon footprint tracking.",
-    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Supabase"],
-    liveUrl: "https://ecomarket.example.com",
-    githubUrl: "https://github.com/mjohnson/ecomarket",
+    title: "Meeting Summarization Testbench",
+    description: "An NLP evaluation tool for analyzing meeting summarization models using Hugging Face and various NLP metrics.",
+    image: "/project/meeting.png",
+    tags: ["Python", "Hugging Face", "Django", "REST API", "NLP"],
+    liveUrl: "https://github.com/gipplab/MeetingSum_Testbench",
+    githubUrl: "https://github.com/gipplab/MeetingSum_Testbench",
+  },
+  {
+    id: 4,
+    title: "Social WordSmith",
+    description: "A Whatsapp and Telegram chat analysis tool that provides message statistics, word clouds, emoji usage, and activity insights for WhatsApp and Telegram chats.",
+    image: "/project/whatsapp.png",
+    tags: ["Streamlit", "Pandas", "Plotly", "Seaborn", "Data Analysis"],
+    liveUrl: "https://mohduwaish59-whatsappwordsmith-app-fywxax.streamlit.app/",
+    githubUrl: "https://github.com/mohdUwaish59",
+  },
+  {
+    id: 5,
+    title: "Web-Scout",
+    description: "A dynamic web scraping tool using Django and Scrapy, allowing users to extract and visualize data from websites.",
+    image: "/project/web1.png",
+    tags: ["Django", "Scrapy", "MongoDB", "Plotly", "Pandas"],
+    liveUrl: "https://github.com/mohdUwaish59/Web-Scout",
+    githubUrl: "https://github.com/mohdUwaish59/Web-Scout",
+  },
+  {
+    id: 6,
+    title: "Digital Danke Schön",
+    description: "A full-stack blog and consultancy platform allowing users to book consultation sessions and access study abroad resources.",
+    image: "/project/digital.png",
+    tags: ["Django", "JavaScript", "AWS", "Bootstrap", "HTML"],
+    liveUrl: "https://www.digitaldankeschoen.com/",
+    githubUrl: "https://github.com/mohdUwaish59",
   },
 ];
 
@@ -52,7 +79,7 @@ export function ProjectsSection() {
           <h2 className="text-3xl font-bold mb-2">My Projects</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects. Each one was built to solve a specific problem or explore new technologies.
+            Here are some of my latest projects. These include NLP applications, chat analysis tools, web scraping platforms, AI-driven recommendation systems, and a machine-learning-based browser extension.
           </p>
         </motion.div>
 
@@ -112,7 +139,7 @@ export function ProjectsSection() {
           className="text-center mt-12"
         >
           <Button variant="outline" size="lg" asChild>
-            <Link href="https://github.com/mjohnson" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/mohdUwaish59" target="_blank" rel="noopener noreferrer">
               View More on GitHub
             </Link>
           </Button>

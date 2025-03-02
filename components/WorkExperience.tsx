@@ -10,7 +10,7 @@ import { Timeline } from "@/components/ui/timeline";
 const experiences = [
     {
         id: 1,
-        title: "Student Assistant - Software Developer",
+        title: "Working Student - Software Development",
         company: "Niedersächsische Staats- und Universitätsbibliothek Göttingen",
         location: "Göttingen, Germany",
         period: "Sep 2024 - Present",

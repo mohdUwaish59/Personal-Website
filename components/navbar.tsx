@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -21,8 +23,15 @@ const navItems = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const { theme } = useTheme();
+
+  // Set mounted to true once component is mounted
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +40,11 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Determine which logo to use based on theme
+  const logoSrc = mounted && theme === "dark" 
+    ? "/logo/dark-mode.png" 
+    : "/logo/light-mode.png";
 
   return (
     <motion.header
@@ -44,12 +58,23 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold">
+        <Link href="/" className="flex items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            Mohd<span className="text-primary">Uwaish</span>
+            {mounted ? (
+              <Image 
+                src={logoSrc}
+                alt="MohdUwaish Logo"
+                width={150}
+                height={40}
+                className="h-10 w-auto" 
+              />
+            ) : (
+              // Placeholder until mounted to prevent hydration mismatch
+              <div className="h-10 w-36 bg-muted/20 rounded animate-pulse" />
+            )}
           </motion.div>
         </Link>
 
