@@ -88,7 +88,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="border-t border-border mt-8 pt-8 text-center text-muted-foreground"
         >
-          <p>© {new Date().getFullYear()} Michael Johnson. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Mohd Uwaish. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
