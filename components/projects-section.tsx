@@ -16,7 +16,7 @@ const projects = [
     image: "/project/geoRAG.jpg",
     tags: ["Retrieval-Augmented Generation", "VectorRAG", "GraphRAG", "LLMs", "Machine Learning"],
     liveUrl: "https://georag-app.streamlit.app/",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/mohdUwaish59/geoRAG",
   },
   {
     id: 2,
