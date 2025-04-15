@@ -29,7 +29,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-foreground/80">
-              Full Stack AI Engineer
+              Full Stack AI Engineer & Data Scientist
             </h2>
           </motion.div>
 

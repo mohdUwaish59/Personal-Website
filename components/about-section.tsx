@@ -70,7 +70,7 @@ export function AboutSection() {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Full Stack Developer & UI/UX Enthusiast
+              Full Stack Developer & Data Scientist
             </h3>
             <p className="text-muted-foreground mb-6">
             I am a Master's student in Applied Computer Science with a specialization in Data Science at Georg-August-Universität Göttingen. 
