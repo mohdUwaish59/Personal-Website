@@ -53,7 +53,7 @@ export function AboutSection() {
             <Card className="overflow-hidden h-full">
               <CardContent className="p-0 h-full">
                 <Image
-                  src="assets/profile.jpg"
+                  src="assets/profile.png"
                   alt="MohammadUwaish"
                   width={500}
                   height={500}
