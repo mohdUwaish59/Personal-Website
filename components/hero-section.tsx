@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail, Code } from "lucide-react";
 import Link from "next/link";
+import { CurrentWork } from "./current-activities";
 
 export function HeroSection() {
   return (
@@ -57,6 +58,8 @@ export function HeroSection() {
             <Button variant="outline" size="lg" asChild>
               <Link href="#projects">View my work</Link>
             </Button>
+
+            <CurrentWork />
           </motion.div>
 
           <motion.div
