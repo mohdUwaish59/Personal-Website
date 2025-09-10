@@ -12,6 +12,8 @@ export class ConversationManager {
    * Save conversation context to localStorage
    */
   static saveContext(context: ConversationContext): void {
+    if (typeof window === 'undefined') return; // Skip on server-side
+    
     try {
       const contextWithTimestamp = {
         ...context,
@@ -27,6 +29,8 @@ export class ConversationManager {
    * Load conversation context from localStorage
    */
   static loadContext(): ConversationContext | null {
+    if (typeof window === 'undefined') return null; // Skip on server-side
+    
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       if (!stored) return null;
@@ -62,6 +66,8 @@ export class ConversationManager {
    * Clear conversation context from localStorage
    */
   static clearContext(): void {
+    if (typeof window === 'undefined') return; // Skip on server-side
+    
     try {
       localStorage.removeItem(this.STORAGE_KEY);
     } catch (error) {
@@ -367,6 +373,8 @@ export class ConversationManager {
    * Check if localStorage is available
    */
   static isStorageAvailable(): boolean {
+    if (typeof window === 'undefined') return false; // Not available on server-side
+    
     try {
       const test = '__storage_test__';
       localStorage.setItem(test, test);
