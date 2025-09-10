@@ -1,0 +1,143 @@
+/* ChatWidget specific styles */
+.chatButton {
+  /* Ensure the button has proper dimensions and styling */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  
+  /* Ensure proper color inheritance */
+  color: white;
+  
+  /* Prevent any potential icon rendering issues */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Smooth transitions */
+  transition: all 0.2s ease-out;
+  
+  /* Shadow and depth */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chatButton:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.chatButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon specific styles */
+.chatIcon {
+  /* Ensure icon is properly centered and sized */
+  width: 32px;
+  height: 32px;
+  
+  /* Ensure proper color inheritance */
+  color: inherit;
+  fill: currentColor;
+  
+  /* Smooth scaling animation */
+  transition: transform 0.2s ease-out;
+  
+  /* Prevent any rendering issues */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Logo specific styles */
+.chatIcon img {
+  /* Ensure logo images display properly */
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.chatButton:hover .chatIcon {
+  transform: scale(1.1);
+}
+
+/* Fallback styles for emoji icons */
+.emojiIcon {
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Notification badge styles */
+.notificationBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .notificationBadge {
+    border-color: #1f2937;
+  }
+}
+
+/* Ensure proper rendering in different browsers */
+.chatButton svg {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Accessibility improvements */
+.chatButton:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.chatButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Animation for the button appearance */
+.chatButtonEnter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.chatButtonEnterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.chatButtonExit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.chatButtonExitActive {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}

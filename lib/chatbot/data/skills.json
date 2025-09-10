@@ -1,0 +1,200 @@
+[
+  {
+    "name": "HTML/CSS",
+    "category": "frontend",
+    "level": 95,
+    "description": "Advanced proficiency in semantic HTML and modern CSS including Flexbox, Grid, and responsive design"
+  },
+  {
+    "name": "JavaScript",
+    "category": "frontend",
+    "level": 95,
+    "description": "Expert-level JavaScript including ES6+, async/await, DOM manipulation, and modern frameworks"
+  },
+  {
+    "name": "TypeScript",
+    "category": "frontend",
+    "level": 90,
+    "description": "Strong typing skills with TypeScript for large-scale applications and better code maintainability"
+  },
+  {
+    "name": "React",
+    "category": "frontend",
+    "level": 95,
+    "description": "Advanced React development including hooks, context, state management, and component architecture"
+  },
+  {
+    "name": "Next.js",
+    "category": "frontend",
+    "level": 90,
+    "description": "Full-stack React framework with SSR, SSG, API routes, and modern web development practices"
+  },
+  {
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "level": 90,
+    "description": "Utility-first CSS framework for rapid UI development and consistent design systems"
+  },
+  {
+    "name": "Framer Motion",
+    "category": "frontend",
+    "level": 85,
+    "description": "Animation library for React applications with smooth transitions and interactive animations"
+  },
+  {
+    "name": "Node.js",
+    "category": "backend",
+    "level": 90,
+    "description": "Server-side JavaScript runtime for building scalable network applications and APIs"
+  },
+  {
+    "name": "Express",
+    "category": "backend",
+    "level": 85,
+    "description": "Web application framework for Node.js for building REST APIs and web applications"
+  },
+  {
+    "name": "Python",
+    "category": "backend",
+    "level": 80,
+    "description": "General-purpose programming language for web development, data science, and machine learning"
+  },
+  {
+    "name": "Django",
+    "category": "backend",
+    "level": 75,
+    "description": "High-level Python web framework for rapid development and clean, pragmatic design"
+  },
+  {
+    "name": "GraphQL",
+    "category": "backend",
+    "level": 85,
+    "description": "Query language and runtime for APIs providing efficient data fetching and type safety"
+  },
+  {
+    "name": "REST API",
+    "category": "backend",
+    "level": 95,
+    "description": "Designing and implementing RESTful web services with proper HTTP methods and status codes"
+  },
+  {
+    "name": "MongoDB",
+    "category": "database",
+    "level": 90,
+    "description": "NoSQL document database for flexible, scalable data storage and retrieval"
+  },
+  {
+    "name": "PostgreSQL",
+    "category": "database",
+    "level": 85,
+    "description": "Advanced relational database with complex queries, indexing, and performance optimization"
+  },
+  {
+    "name": "MySQL",
+    "category": "database",
+    "level": 80,
+    "description": "Relational database management system for web applications and data storage"
+  },
+  {
+    "name": "ChromaDB",
+    "category": "database",
+    "level": 80,
+    "description": "Vector database for AI applications, embeddings storage, and semantic search"
+  },
+  {
+    "name": "Pinecone",
+    "category": "database",
+    "level": 80,
+    "description": "Managed vector database service for machine learning applications and similarity search"
+  },
+  {
+    "name": "LangChain",
+    "category": "rag",
+    "level": 88,
+    "description": "Framework for developing applications with large language models and RAG systems"
+  },
+  {
+    "name": "LangGraph",
+    "category": "rag",
+    "level": 85,
+    "description": "Library for building stateful, multi-actor applications with LLMs using graph-based workflows"
+  },
+  {
+    "name": "LlamaIndex",
+    "category": "rag",
+    "level": 75,
+    "description": "Data framework for connecting custom data sources to large language models"
+  },
+  {
+    "name": "RAGAS",
+    "category": "rag",
+    "level": 80,
+    "description": "Framework for evaluating Retrieval Augmented Generation (RAG) systems and pipelines"
+  },
+  {
+    "name": "Vector Databases",
+    "category": "rag",
+    "level": 85,
+    "description": "Specialized databases for storing and querying high-dimensional vector embeddings"
+  },
+  {
+    "name": "Semantic Search",
+    "category": "rag",
+    "level": 90,
+    "description": "Advanced search techniques using embeddings and similarity matching for better relevance"
+  },
+  {
+    "name": "LLM Integration",
+    "category": "rag",
+    "level": 85,
+    "description": "Integrating large language models into applications with proper prompt engineering"
+  },
+  {
+    "name": "Prompt Engineering",
+    "category": "rag",
+    "level": 92,
+    "description": "Crafting effective prompts for LLMs to achieve desired outputs and behavior"
+  },
+  {
+    "name": "Document Processing",
+    "category": "rag",
+    "level": 80,
+    "description": "Processing and chunking documents for RAG systems and information retrieval"
+  },
+  {
+    "name": "Git/GitHub",
+    "category": "other",
+    "level": 95,
+    "description": "Version control, collaboration, CI/CD workflows, and project management"
+  },
+  {
+    "name": "Docker",
+    "category": "other",
+    "level": 80,
+    "description": "Containerization for consistent development and deployment environments"
+  },
+  {
+    "name": "AWS",
+    "category": "other",
+    "level": 75,
+    "description": "Cloud services including EC2, S3, Lambda, and other AWS infrastructure services"
+  },
+  {
+    "name": "CI/CD",
+    "category": "other",
+    "level": 80,
+    "description": "Continuous integration and deployment pipelines for automated testing and deployment"
+  },
+  {
+    "name": "Testing",
+    "category": "other",
+    "level": 85,
+    "description": "Unit testing, integration testing, and test-driven development practices"
+  },
+  {
+    "name": "Tableau",
+    "category": "other",
+    "level": 85,
+    "description": "Data visualization and business intelligence tool for creating interactive dashboards"
+  }
+]

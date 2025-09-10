@@ -1,0 +1,28 @@
+{
+  "name": "Mohd Uwaish",
+  "title": "Full Stack AI Engineer & Data Scientist",
+  "email": "mohd.uwaish@stud.uni-goettingen.de",
+  "location": "Göttingen, Germany",
+  "availability": "Open to opportunities",
+  "bio": "I am a Master's student in Applied Computer Science with a specialization in Data Science at Georg-August-Universität Göttingen. I have experience in full-stack development, data science, and machine learning, working on innovative solutions across multiple domains.",
+  "interests": [
+    "RAG Systems",
+    "Full-stack development",
+    "Data Science",
+    "Machine Learning",
+    "Open-source projects",
+    "Developer community engagement"
+  ],
+  "education": {
+    "degree": "MSc in Applied Computer Science",
+    "specialization": "Data Science",
+    "university": "Georg-August-Universität Göttingen",
+    "location": "Göttingen, Germany",
+    "status": "Currently pursuing"
+  },
+  "socialLinks": {
+    "github": "https://github.com/mohdUwaish59",
+    "linkedin": "https://linkedin.com/in/muwaish5",
+    "email": "mohd.uwaish@stud.uni-goettingen.de"
+  }
+}

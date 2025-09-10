@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "geoRAG",
+    "description": "A Retrieval-Augmented Generation (RAG)-based system designed to extract information from georock database for geochemistry research papers efficiently using hybrid retrieval techniques.",
+    "tags": ["Retrieval-Augmented Generation", "VectorRAG", "GraphRAG", "LLMs", "Machine Learning"],
+    "liveUrl": "https://georag-app.streamlit.app/",
+    "githubUrl": "https://github.com/mohdUwaish59/geoRAG",
+    "image": "/project/geoRAG.jpg",
+    "category": "RAG System",
+    "technologies": ["Python", "Streamlit", "LangChain", "Vector Databases", "LLMs"],
+    "highlights": [
+      "Hybrid retrieval techniques combining vector and graph-based approaches",
+      "Efficient information extraction from geochemistry research papers",
+      "Deployed as interactive Streamlit application"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Browser Extension for Image Sensitivity Prediction",
+    "description": "A ReactJS-based browser extension that predicts image sensitivity for Facebook, Twitter, and Instagram using a trained deep learning model deployed via Flask API.",
+    "tags": ["React", "Flask", "Machine Learning", "REST API", "Computer Vision"],
+    "liveUrl": "https://github.com/mohdUwaish59/image-sensitivity-extension",
+    "githubUrl": "https://github.com/mohdUwaish59/image-sensitivity-extension",
+    "image": "/project/meeting.png",
+    "category": "Machine Learning",
+    "technologies": ["React", "Flask", "Python", "Deep Learning", "Computer Vision"],
+    "highlights": [
+      "Real-time image sensitivity prediction across social media platforms",
+      "Deep learning model integration with browser extension",
+      "Flask API for model serving and prediction"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Meeting Summarization Testbench",
+    "description": "An NLP evaluation tool for analyzing meeting summarization models using Hugging Face and various NLP metrics.",
+    "tags": ["Python", "Hugging Face", "Django", "REST API", "NLP"],
+    "liveUrl": "https://github.com/gipplab/MeetingSum_Testbench",
+    "githubUrl": "https://github.com/gipplab/MeetingSum_Testbench",
+    "image": "/project/meeting.png",
+    "category": "NLP",
+    "technologies": ["Python", "Django", "Hugging Face", "NLP", "Machine Learning"],
+    "highlights": [
+      "Comprehensive evaluation framework for meeting summarization models",
+      "Integration with Hugging Face model hub",
+      "Multiple NLP metrics for model assessment"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Social WordSmith",
+    "description": "A Whatsapp and Telegram chat analysis tool that provides message statistics, word clouds, emoji usage, and activity insights for WhatsApp and Telegram chats.",
+    "tags": ["Streamlit", "Pandas", "Plotly", "Seaborn", "Data Analysis"],
+    "liveUrl": "https://mohduwaish59-whatsappwordsmith-app-fywxax.streamlit.app/",
+    "githubUrl": "https://github.com/mohdUwaish59",
+    "image": "/project/whatsapp.png",
+    "category": "Data Analysis",
+    "technologies": ["Python", "Streamlit", "Pandas", "Plotly", "Data Visualization"],
+    "highlights": [
+      "Comprehensive chat analysis with statistical insights",
+      "Interactive visualizations and word clouds",
+      "Support for multiple messaging platforms"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Web-Scout",
+    "description": "A dynamic web scraping tool using Django and Scrapy, allowing users to extract and visualize data from websites.",
+    "tags": ["Django", "Scrapy", "MongoDB", "Plotly", "Pandas"],
+    "liveUrl": "https://github.com/mohdUwaish59/Web-Scout",
+    "githubUrl": "https://github.com/mohdUwaish59/Web-Scout",
+    "image": "/project/web1.png",
+    "category": "Web Scraping",
+    "technologies": ["Python", "Django", "Scrapy", "MongoDB", "Data Visualization"],
+    "highlights": [
+      "Dynamic web scraping with configurable targets",
+      "Data visualization and analysis capabilities",
+      "MongoDB integration for data storage"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Digital Danke Schön",
+    "description": "A full-stack blog and consultancy platform allowing users to book consultation sessions and access study abroad resources.",
+    "tags": ["Django", "JavaScript", "AWS", "Bootstrap", "HTML"],
+    "liveUrl": "https://www.digitaldankeschoen.com/",
+    "githubUrl": "https://github.com/mohdUwaish59",
+    "image": "/project/digital.png",
+    "category": "Full-Stack Web Application",
+    "technologies": ["Django", "JavaScript", "AWS", "Bootstrap", "HTML", "CSS"],
+    "highlights": [
+      "Complete consultancy platform with booking system",
+      "Study abroad resources and blog functionality",
+      "AWS deployment with scalable architecture"
+    ]
+  }
+]
