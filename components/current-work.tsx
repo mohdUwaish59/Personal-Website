@@ -22,7 +22,7 @@ export default function InfiniteMovingCardsDemo() {
       <div className="h-[40rem] rounded-md flex flex-col antialiased items-center justify-center relative">
         <InfiniteMovingCards
           items={testimonials}
-          direction="right"
+          direction="left"
           speed="normal"
         />
       </div>
