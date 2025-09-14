@@ -11,6 +11,15 @@ import Link from "next/link";
 const projects = [
   {
     id: 1,
+    title: "ZeroDesk AI Chatbot",
+    description: "A full stack Retrieval-Augmented Generation (RAG)-based system chatbot that act as a 0th level support agent for IT helpdesk using NextJS, FastAPI, and Docker.",
+    image: "/project/zerodesk.png",
+    tags: ["NextJS", "fastapi", "RAG", "Docker", "Natural Language Processing"],
+    liveUrl: "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
+    githubUrl: "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
+  },
+  {
+    id: 2,
     title: "geoRAG",
     description: "A Retrieval-Augmented Generation (RAG)-based system designed to extract information from georock database for geochemistry research papers efficiently using hybrid retrieval techniques.",
     image: "/project/geoRAG.jpg",
@@ -19,16 +28,16 @@ const projects = [
     githubUrl: "https://github.com/mohdUwaish59/geoRAG",
   },
   {
-    id: 2,
+    id: 3,
     title: "Browser Extension for Image Sensitivity Prediction",
     description: "A ReactJS-based browser extension that predicts image sensitivity for Facebook, Twitter, and Instagram using a trained deep learning model deployed via Flask API.",
     image: "/project/meeting.png",
     tags: ["React", "Flask", "Machine Learning", "REST API", "Computer Vision"],
-    liveUrl: "https://github.com/mohdUwaish59/image-sensitivity-extension",
-    githubUrl: "https://github.com/mohdUwaish59/image-sensitivity-extension",
+    liveUrl: "https://github.com/ayangupta9/RASP_twitter",
+    githubUrl: "https://github.com/ayangupta9/RASP_twitter",
   },
   {
-    id: 3,
+    id: 4,
     title: "Meeting Summarization Testbench",
     description: "An NLP evaluation tool for analyzing meeting summarization models using Hugging Face and various NLP metrics.",
     image: "/project/meeting.png",
@@ -37,7 +46,7 @@ const projects = [
     githubUrl: "https://github.com/gipplab/MeetingSum_Testbench",
   },
   {
-    id: 4,
+    id: 5,
     title: "Social WordSmith",
     description: "A Whatsapp and Telegram chat analysis tool that provides message statistics, word clouds, emoji usage, and activity insights for WhatsApp and Telegram chats.",
     image: "/project/whatsapp.png",
@@ -46,22 +55,13 @@ const projects = [
     githubUrl: "https://github.com/mohdUwaish59",
   },
   {
-    id: 5,
+    id: 6,
     title: "Web-Scout",
     description: "A dynamic web scraping tool using Django and Scrapy, allowing users to extract and visualize data from websites.",
     image: "/project/web1.png",
     tags: ["Django", "Scrapy", "MongoDB", "Plotly", "Pandas"],
     liveUrl: "https://github.com/mohdUwaish59/Web-Scout",
     githubUrl: "https://github.com/mohdUwaish59/Web-Scout",
-  },
-  {
-    id: 6,
-    title: "Digital Danke Schön",
-    description: "A full-stack blog and consultancy platform allowing users to book consultation sessions and access study abroad resources.",
-    image: "/project/digital.png",
-    tags: ["Django", "JavaScript", "AWS", "Bootstrap", "HTML"],
-    liveUrl: "https://www.digitaldankeschoen.com/",
-    githubUrl: "https://github.com/mohdUwaish59",
   },
 ];
 

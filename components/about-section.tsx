@@ -77,7 +77,7 @@ export function AboutSection() {
             I have experience in full-stack development, data science, and machine learning, working on innovative solutions across multiple domains.
             </p>
             <p className="text-muted-foreground mb-6">
-            My expertise includes technologies like Python, JavaScript, Django, Flask, React, and Next.js. I am passionate about RAG Systems, building scalable web applications, 
+            My expertise includes technologies like Python, JavaScript, Django, Flask, React, and Next.js. I am passionate about Natural Langauage processing, Deep Learning, RAG Systems, building scalable web applications, 
             developing data-driven insights, and deploying machine learning models for real-world applications.
             </p>
             <p className="text-muted-foreground mb-8">

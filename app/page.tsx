@@ -5,7 +5,6 @@ import { AboutSection } from "@/components/about-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { SkillsSection } from "@/components/skills-section";
 import { ContactSection } from "@/components/contact-section";
-import { BlogSection } from "@/components/blog-section";
 import { Footer } from "@/components/footer";
 import WorkExperience from "@/components/WorkExperience";
 
@@ -14,12 +13,11 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <InfiniteMovingCardsDemo />
       <AboutSection />
+      <InfiniteMovingCardsDemo />
       <WorkExperience />
       <ProjectsSection />
       <SkillsSection />
-      <BlogSection />
       <ContactSection />
       <Footer />
     </main>

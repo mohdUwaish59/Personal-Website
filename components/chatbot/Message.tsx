@@ -1,7 +1,7 @@
 'use client';
 
 import { Message as MessageType } from '@/lib/chatbot/types';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage  } from '@/components/ui/avatar';
 import { Bot, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -46,6 +46,7 @@ export default function Message({ message, isBot }: MessageProps) {
     >
       {isBot && (
         <Avatar className="h-8 w-8 shrink-0">
+          <AvatarImage src="/favicon/favicon.png" alt="Bot" />
           <AvatarFallback className="bg-primary text-primary-foreground">
             <Bot className="h-4 w-4" />
           </AvatarFallback>

@@ -13,7 +13,7 @@ export default function InfiniteMovingCardsDemo() {
             What am I doing currently?
           </h2>
           <div className="mt-6 flex items-center justify-center">
-            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+            <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           </div>
         </div>
       </div>

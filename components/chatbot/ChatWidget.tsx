@@ -198,7 +198,7 @@ export default function ChatWidget({
               <StyledLogoChatIcon 
                 className={cn(styles.chatIcon, "relative z-10")}
                 size={32}
-                logoSrc="/favicon/favicon.png" // Change this to your logo path
+                logoSrc="/favicon/favicon.png" 
                 alt="Mohd Uwaish - Chat"
                 showBorder={true}
                 borderColor="rgba(255, 255, 255, 0.3)"
