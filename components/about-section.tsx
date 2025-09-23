@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import Image from "next/image";
+import { GitHubContributions } from "./github-contributions";
 
 export function AboutSection() {
   const handleDownloadResume = async () => {
@@ -108,6 +109,17 @@ export function AboutSection() {
             </Button>
           </motion.div>
         </div>
+
+        {/* GitHub Contributions Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16"
+        >
+          <GitHubContributions />
+        </motion.div>
       </div>
     </section>
   );
