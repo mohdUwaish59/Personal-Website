@@ -435,18 +435,6 @@ export function GitHubContributions() {
           )}
 
           {/* GitHub Link */}
-          <div className="text-center">
-            <Button variant="outline" size="sm" asChild>
-              <Link 
-                href={`https://github.com/${username}`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                View on GitHub
-              </Link>
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </motion.div>
