@@ -33,8 +33,8 @@ export default function InfiniteMovingCardsDemo() {
 const testimonials = [
   {
     detail: "A RAG powered AI chatbot full stack web application that acts as a 0th level support for the company. It is capable of handling various queries and providing accurate and helpful responses.",
-    title: "InfoTechWizard",
-    link: "https://github.com/Muhammadhammad24/Infotech-Wizard",
+    title: "ZeroDesk AI chatbot",
+    link: "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
     type: "company" as const,
     logo: "/favicon/favicon.png",
     organization: "TCS",

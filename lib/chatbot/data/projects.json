@@ -1,6 +1,28 @@
 [
   {
     "id": 1,
+    "title": "ZeroDesk AI Chatbot",
+    "description": "A RAG powered AI chatbot full stack web application that acts as a 0th level support for the company. It is capable of handling various queries and providing accurate and helpful responses.",
+    "tags": ["Retrieval-Augmented Generation", "Fastapi", "NextJS", "LLMs", "Machine Learning", "Full stack"],
+    "liveUrl": "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
+    "githubUrl": "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
+    "image": "/project/zerodesk.png",
+    "category": "RAG System",
+    "technologies": ["Python", "Streamlit", "LangChain", "Vector Databases", "LLMs"],
+    "highlights": [
+      "AI-Powered RAG Architecture: Retrieval-Augmented Generation with FAISS vector search",
+      "Multiple Models: Support for various LLMs via HuggingFace Transformers",
+      "Smart Context: Semantic search for relevant document retrieval",
+      "High Performance FastAPI: Async/await support with automatic documentation",
+      "Optimized Search: FAISS-powered vector similarity search",
+      "Production Ready: Comprehensive error handling and monitoring",
+      "DevOps Ready Docker Support: Container-ready deployment",
+      "Health Checks: Built-in monitoring and diagnostics",
+      "Auto Documentation: Interactive Swagger UI at"
+    ]
+  },
+  {
+    "id": 1,
     "title": "geoRAG",
     "description": "A Retrieval-Augmented Generation (RAG)-based system designed to extract information from georock database for geochemistry research papers efficiently using hybrid retrieval techniques.",
     "tags": ["Retrieval-Augmented Generation", "VectorRAG", "GraphRAG", "LLMs", "Machine Learning"],
