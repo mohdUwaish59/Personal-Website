@@ -30,7 +30,6 @@ function genId() {
 }
 
 type ActionType = typeof actionTypes;
-
 type Action =
   | {
       type: ActionType['ADD_TOAST'];
