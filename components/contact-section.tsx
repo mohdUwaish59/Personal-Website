@@ -124,7 +124,7 @@ export function ContactSection() {
                       <MapPin className="h-5 w-5 mr-3 text-primary mt-0.5" />
                       <div>
                         <h4 className="font-medium">Location</h4>
-                        <p className="text-muted-foreground">Göttingen, Germany</p>
+                        <p className="text-muted-foreground">Germany</p>
                       </div>
                     </div>
 

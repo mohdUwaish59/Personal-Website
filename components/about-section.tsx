@@ -96,7 +96,7 @@ export function AboutSection() {
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Location:</h4>
-                <p className="text-muted-foreground">Göttingen, Germany</p>
+                <p className="text-muted-foreground">Germany</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Availability:</h4>
