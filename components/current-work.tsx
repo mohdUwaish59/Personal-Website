@@ -32,6 +32,14 @@ export default function InfiniteMovingCardsDemo() {
 
 const testimonials = [
   {
+    detail: "An e-commerce webapp in Next.JS and Supabase to sell kids fashion cloths in Indian Market",
+    title: "amotogs.com",
+    link: "https://amotogs.vercel.app/",
+    type: "company" as const,
+    logo: "/project/amotogs.png",
+    organization: "TCS",
+  },
+  {
     detail: "A RAG powered AI chatbot full stack web application that acts as a 0th level support for the company. It is capable of handling various queries and providing accurate and helpful responses.",
     title: "ZeroDesk AI chatbot",
     link: "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
@@ -55,5 +63,5 @@ const testimonials = [
     logo: "/company_logos/fraunhofer.jpg",
     organization: "Fraunhofer",
   },
-  
+
 ];

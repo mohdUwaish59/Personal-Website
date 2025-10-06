@@ -62,6 +62,15 @@ export const InfiniteMovingCards = ({
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
+      // Create multiple duplicates for seamless infinite scroll
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
+      });
+
+      // Add another set of duplicates for extra smoothness
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
         if (scrollerRef.current) {
@@ -75,28 +84,22 @@ export const InfiniteMovingCards = ({
     }
   }
   const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards",
-        );
+    if (scrollerRef.current) {
+      if (direction === "right") {
+        scrollerRef.current.setAttribute("data-direction", "reverse");
       } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse",
-        );
+        scrollerRef.current.removeAttribute("data-direction");
       }
     }
   };
   const getSpeed = () => {
-    if (containerRef.current) {
+    if (scrollerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        scrollerRef.current.style.setProperty("--animation-duration", "20s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "30s");
+        scrollerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        scrollerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
   };
