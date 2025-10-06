@@ -97,7 +97,7 @@ export const InfiniteMovingCards = ({
       if (speed === "fast") {
         scrollerRef.current.style.setProperty("--animation-duration", "20s");
       } else if (speed === "normal") {
-        scrollerRef.current.style.setProperty("--animation-duration", "40s");
+        scrollerRef.current.style.setProperty("--animation-duration", "55s");
       } else {
         scrollerRef.current.style.setProperty("--animation-duration", "80s");
       }
