@@ -111,15 +111,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
-      >
-        <ArrowDown className="h-6 w-6 text-primary" />
-      </motion.div>
-
       {/* Enhanced background decoration */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient background */}
