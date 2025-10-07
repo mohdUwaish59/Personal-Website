@@ -63,7 +63,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <p className="text-lg md:text-xl mb-8 max-w-2xl text-muted-foreground">
-              I specialize in developing fullstack web applications, RAG systems and leveraging data science 
+              I specialize in developing Machine Learning systems, fullstack web applications, RAG systems and leveraging data science 
               to solve real-world problems. Currently pursuing my MSc in Applied Computer Science 
               with a specialization in Data Science at Georg-August-Universität Göttingen.
             </p>
