@@ -15,11 +15,12 @@ const experiences = [
     company: "Fraunhofer-Einrichtung für Energieinfrastrukturen und Geotechnologien IEG",
     location: "Bochum, Germany",
     period: "Sep 2025 - Present",
-    description: "Building model to predict electricity price and demand using Time-series data and Sentiment Score of new articles and social media discussion.",
+    description: "AI for Energy and Electricity demand prediction - Researching News and public sentiment analysis for predicting energy consumption patterns using deep learning techniques.",
     achievements: [
+      "Conduct Literature research on state-of-the-art techniques for sentiment analysis and energy consumption prediction."
 
     ],
-    skills: ["Deep Learning", "NLP", "Sentiment Analysis", "Technical Documentation", "Code Review", "CI/CD", "Docker", "ddev", "Git", "GitLab"],
+    skills: ["Deep Learning", "NLP", "Sentiment Analysis","Literature Research", "Technical Documentation", "Code Review", "CI/CD", "Docker", "ddev", "Git", "GitLab"],
     logo: "/company_logos/fraunhofer.jpg"
   },
   {
@@ -163,7 +164,7 @@ const WorkExperience = () => {
                         <p className="text-muted-foreground mb-4">{experience.description}</p>
 
                         <div className="mb-4">
-                          <h4 className="font-semibold mb-2">Key Achievements:</h4>
+                          <h4 className="font-semibold mb-2">Responsibilities</h4>
                           <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
                             {experience.achievements.map((achievement, i) => (
                               <li key={i}>{achievement}</li>
