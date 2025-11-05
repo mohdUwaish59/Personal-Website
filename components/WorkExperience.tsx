@@ -20,7 +20,7 @@ const experiences = [
       "Conduct Literature research on state-of-the-art techniques for sentiment analysis and energy consumption prediction."
 
     ],
-    skills: ["Deep Learning", "NLP", "Sentiment Analysis","Literature Research", "Technical Documentation", "Code Review", "CI/CD", "Docker", "ddev", "Git", "GitLab"],
+    skills: ["Deep Learning", "NLP", "Sentiment Analysis", "Literature Research", "Technical Documentation", "Code Review", "CI/CD", "Docker", "ddev", "Git", "GitLab"],
     logo: "/company_logos/fraunhofer.jpg"
   },
   {
@@ -40,7 +40,7 @@ const experiences = [
   },
   {
     id: 3,
-    title: "Working Student - Software Development",
+    title: "Midi Job - Software Development",
     company: "Niedersächsische Akademie der Wissenschaften zu Göttingen",
     location: "Göttingen, Germany",
     period: "Jun 2025 - Aug 2025",

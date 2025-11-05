@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -157,6 +158,9 @@ export function Navbar() {
           </div>
         </motion.div>
       )}
+      
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </motion.header>
   );
 }
