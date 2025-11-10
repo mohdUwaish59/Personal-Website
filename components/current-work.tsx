@@ -48,9 +48,9 @@ const testimonials = [
     organization: "TCS",
   },
   {
-    detail: "A multi-agent setup where the first agent is responsible for jailbreaking the second agent and another LLM acts as a judge to analyze the communication and decide whether the jailbreak is successful or not.",
-    title: "Agents Jailbreaking Agents",
-    link: "https://github.com/mohdUwaish59/Agents-Jailbreaking-Agents",
+    detail: "A proxy server facilitating gender based group making participants, redirecting the group from Prolific platform to Otree experiment and redirect each group back to Prolific from experiemnt ensuring smooth Experience.",
+    title: "oTree Proxy Server",
+    link: "https://github.com/mohdUwaish59/dfg-project-proxy-server",
     type: "university" as const,
     logo: "/company_logos/goe.png",
     organization: "University of Göttingen",

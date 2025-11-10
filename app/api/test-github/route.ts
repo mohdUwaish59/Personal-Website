@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
   console.log('🔍 Testing GitHub API from server...');
-  
+
   try {
     const token = process.env.GITHUB_TOKEN;
-    
+
     console.log('Token exists:', !!token);
     console.log('Token length:', token ? token.length : 0);
-    
+
     if (!token) {
       return NextResponse.json({
         success: false,
@@ -115,7 +115,7 @@ export async function GET() {
     }
 
     const contributions = graphqlData.data?.user?.contributionsCollection?.contributionCalendar;
-    
+
     return NextResponse.json({
       success: true,
       tokenValid: true,
