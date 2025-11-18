@@ -40,11 +40,11 @@ const testimonials = [
     organization: "TCS",
   },
   {
-    detail: "A RAG powered AI chatbot full stack web application that acts as a 0th level support for the company. It is capable of handling various queries and providing accurate and helpful responses.",
-    title: "ZeroDesk AI chatbot",
-    link: "https://github.com/mohdUwaish59/ZeroDesk-AI-Chatbot",
+    detail: "Reserachng on class overlapping problem in classification task in machine learning, Implementing the benchmark system to investigate the multiple data-level handling techniques.",
+    title: "Class Overlapping benchmark",
+    link: "https://github.com/mohdUwaish59/Investigating-Techniques-for-Class-Overlapping-problem/tree/main",
     type: "company" as const,
-    logo: "/favicon/favicon.png",
+    logo: "/company_logos/goe.png",
     organization: "TCS",
   },
   {
