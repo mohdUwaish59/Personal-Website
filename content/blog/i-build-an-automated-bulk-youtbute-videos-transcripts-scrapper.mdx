@@ -1,0 +1,258 @@
+---
+title: "I Built a Chrome Extension to Extract YouTube Transcripts in Bulk "
+date: "2025-11-24"
+excerpt: "Learn how to create beautiful, responsive layouts using Tailwind CSS utility classes and best practices."
+coverImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+author:
+  name: "Mohammad Uwaish"
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+tags: ["Tjavascript", "RAG", "chatbot", "data-scrapping", "frontend", "automation", "youtube-transcripts-extract"]
+readingTime: 8
+---
+
+So, I had this problem. I was working on a personal project where I wanted to develop an information retrieval system from transcripts from about 300 YouTube videos. Sounds fun, right? Wrong. Try manually clicking "Show transcript" → Copy → Paste → Save as file... 300 times. Yeah, I made it through about 5 videos before I said "nope, there's gotta be a better way."
+
+Spoiler alert: there wasn't. At least not one that did exactly what I needed. So I built one.
+
+## The Problem Was Real
+
+Here's the thing - YouTube has transcripts for most videos (thank you, auto-captions!), but getting them out is... tedious. Sure, you can click and copy one at a time, but when you're dealing with:
+
+- An entire playlist of educational content
+- All videos from a specific channel
+- A curated list of videos for research
+
+...you're looking at hours of repetitive clicking. And let's be honest, we became developers specifically to avoid repetitive clicking.
+
+## What I Built
+
+Meet the **YouTube Transcript Extractor** - a Chrome extension that does three main things:
+
+1. **Single video extraction** - One click, get a JSON file with the transcript
+2. **Playlist/Channel scraping** - Grab all video IDs from a playlist or channel  
+3. **Batch processing** - Process dozens (or hundreds) of videos automatically
+
+The best part? It handles all the annoying stuff automatically:
+- Clicks the "Show transcript" button for you
+- Waits for transcripts to load
+- Adds smart delays to avoid rate limiting
+- Retries failed extractions
+- Gives you real-time progress updates
+
+## How It Actually Works
+
+### For a Single Video
+
+It's stupid simple:
+
+1. You're on a YouTube video
+2. Click the extension icon
+3. Click "Extract Transcript"
+4. Boom - JSON file downloads
+
+The output looks like this:
+
+```json
+{
+  "channel_username": "veritasium",
+  "video_id": "dQw4w9WgXcQ",
+  "transcript": "Full transcript text here..."
+}
+```
+
+Perfect for feeding into your text analysis pipeline, building datasets, or just archiving content you care about.
+
+### For Entire Playlists
+
+This is where it gets fun. You give it a playlist URL:
+
+```
+https://www.youtube.com/playlist?list=PLxxxxxx
+```
+
+The extension:
+- Auto-scrolls through the entire playlist
+- Extracts all video IDs
+- Saves them to your browser storage
+- Lets you download them as a text file
+
+Then you can either process them immediately or save them for later. I've found this super useful for tracking new uploads from channels I follow.
+
+### Batch Processing (The Real MVP)
+
+Here's the workflow that saves hours:
+
+1. Load your video IDs (from playlist extraction or manual paste)
+2. Set your batch size (I usually go with 15-20 videos)
+3. Click "Start Batch Process"
+4. Go grab coffee ☕
+
+The extension will:
+- Navigate to each video automatically
+- Extract the transcript
+- Download it as JSON
+- Wait 5-15 seconds (random delay to be nice to YouTube)
+- Move to the next one
+
+You get real-time updates like:
+
+```
+Processing video 23/150 (Batch 2/10)
+✅ Success: 22 | ⏭️ Skipped: 1 | ❌ Failed: 0
+```
+
+## The Technical Bits (For Fellow Nerds)
+
+Built with:
+- **Manifest V3** (because V2 is being phased out)
+- **Chrome's Side Panel API** (way better UX than popups)
+- **Content Scripts** for DOM manipulation
+- **Chrome Storage API** for persistence
+- Vanilla JavaScript (keeping it simple)
+
+Some challenges I ran into:
+
+### Challenge 1: The Transcript Button
+
+YouTube doesn't always show transcripts immediately. Sometimes you need to click a button first. My solution? The extension automatically finds and clicks it:
+
+```javascript
+const transcriptButton = document.querySelector('[aria-label*="transcript"]');
+if (transcriptButton) {
+  transcriptButton.click();
+  // Wait for transcript to load
+  await sleep(2000);
+}
+```
+
+### Challenge 2: Rate Limiting
+
+YouTube isn't thrilled when you hit their servers 100 times in 5 minutes. Fair enough. So I added:
+- Random delays (5-15 seconds between requests)
+- Configurable batch sizes
+- Automatic retry logic with exponential backoff
+
+Haven't been rate-limited since. 🎉
+
+### Challenge 3: Playlist Pagination
+
+Playlists don't load all videos at once - you have to scroll to trigger lazy loading. The extension handles this:
+
+```javascript
+function autoScroll() {
+  return new Promise((resolve) => {
+    let scrollCount = 0;
+    const maxScrolls = 50; // Safety limit
+    
+    const interval = setInterval(() => {
+      window.scrollBy(0, 1000);
+      scrollCount++;
+      
+      // Check if we've reached the bottom
+      if (scrollCount >= maxScrolls || isAtBottom()) {
+        clearInterval(interval);
+        resolve();
+      }
+    }, 1000);
+  });
+}
+```
+
+## Real-World Use Cases
+
+This can be used for:
+
+### 1. Information retrieval
+I personally worked on this use case. I Collected transcripts from 300+ videos. Extracted the information each transcript in question-answer format and converted them into a vector database for chatbot interface. Would have taken days manually - took 40 minutes with the extension.
+
+### 2. Content Monitoring
+Track new uploads from favorite tech channels. Run it once a week, compare video IDs, process only new content. Built a simple notification system around it.
+
+### 3. Podcast Transcription Analysis
+Many podcasts are on YouTube now. Grabbed transcripts from entire podcast series to analyze conversation patterns and topics.
+
+### 4. Language Learning
+Downloaded transcripts from language-learning channels in my target language. Now I have a searchable corpus of natural conversation.
+
+## The Gotchas
+
+Not everything is perfect (yet):
+
+- **Some videos don't have transcripts** - The extension will skip these and note them in the log
+- **YouTube's rate limits are real** - Don't try to process 500 videos in one go
+- **Auto-generated transcripts aren't perfect** - Expect some "lol" instead of "LOL" situations
+- **It only works in Chrome** - Firefox support is on my TODO list
+
+## Want to Try It?
+
+The extension is open source! Here's how to get started:
+
+### Installation (2 minutes)
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/youtube-transcript-extractor.git
+
+# Open Chrome
+chrome://extensions/
+
+# Enable Developer Mode (top right)
+# Click "Load unpacked"
+# Select the extension folder
+```
+
+That's it! 
+
+### Quick Test
+
+1. Go to any YouTube video
+2. Click the extension icon
+3. Click "Extract Transcript"
+4. Check your downloads folder
+
+You should see a JSON file. If you do, you're ready to rock!
+
+## What's Next?
+
+I'm actively working on:
+
+- **Firefox support** - Because not everyone uses Chrome
+- **Export formats** - SRT, VTT, plain text
+- **Timestamp preservation** - Keep the timing data from transcripts
+- **Better error handling** - More descriptive error messages
+- **Progress persistence** - Resume batch processing after browser crash
+
+## Contributing
+
+This project started as a personal tool, but I'd love to make it better with your help! Whether it's:
+
+- Bug reports
+- Feature suggestions
+- Code contributions
+- Documentation improvements
+
+All are welcome! Check out the [GitHub repo](https://github.com/mohdUwaish59/Automated-Youtube-vidoes-transcripts-scrapper) and feel free to open issues or PRs.
+
+## Real Talk: Why Build This?
+
+I could have probably found *something* that did parts of what I needed. Maybe some Python script, maybe some paid service. But here's what I learned building this:
+
+1. **Sometimes the best tool is the one you build** - It does exactly what you need, nothing more
+2. **Side projects teach you stuff** - I learned a ton about Chrome extension APIs
+3. **Automation is worth it** - Even if building it takes 10 hours, saving 20 hours is worth it
+4. **Open source feels good** - Knowing others might find this useful is cool
+
+Plus, it's just satisfying watching the extension churn through 300 videos while you do literally anything else.
+
+## Wrapping Up
+
+If you ever find yourself manually copying YouTube transcripts, give this extension a shot. It's not perfect, but it's saved me countless hours, and I hope it does the same for you.
+
+Got questions? Drop them in the comments! Found a bug? Please let me know - I promise I don't bite. 😊
+
+And if you build something cool with the transcripts you extract, I'd love to hear about it!
+
+Happy automating the boring stuff! 🎬📝
+
+
+*P.S. - If you found this useful, a star on GitHub would make my day! ⭐*
