@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { ChatWidgetProvider } from '@/components/chatbot/ChatWidgetProvider';
 import ChatWidgetContainer from '@/components/chatbot/ChatWidgetContainer';
+import { ProjectsSheet } from '@/components/projects-sheet';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
             {children}
             <Toaster />
             <ChatWidgetContainer />
+            <ProjectsSheet />
           </ChatWidgetProvider>
         </ThemeProvider>
       </body>

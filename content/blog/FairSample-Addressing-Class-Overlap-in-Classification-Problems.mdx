@@ -1,0 +1,392 @@
+---
+title: "FairSample: Addressing Class Overlap in Classification Problems"
+date: "2026-02-10"
+excerpt: "How research on class overlap-handling techniques became a practical Python package for addressing the problem that's often more significant than imbalance"
+coverImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+author:
+  name: "Mohammad Uwaish"
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+tags: [machine-learning, python, open-source, class-overlap, classification]
+readingTime: 14
+---
+
+# FairSample: Addressing Class Overlap in Classification Problems
+
+![FairSample Banner](../assets/images/fairsample-banner.png)
+
+## The Underappreciated Challenge
+
+Santos et al. argue that class overlap is a more significant impediment to classifier performance than imbalance alone. Yet when practitioners encounter classification problems, most tools and tutorials focus exclusively on class imbalance.
+
+During my research, I investigated how various overlap-handling techniques affect global structural complexity in classification problems. The work revealed that addressing overlap requires more sophisticated analysis than simply balancing class ratios.
+
+FairSample emerged from this research—a practical tool for the class overlap problem.
+
+## What Is Class Overlap?
+
+Class overlap occurs when instances from different classes share similar feature values in the input space. Consider:
+```
+Disease A patients: [symptom1=high, symptom2=medium, symptom3=low]
+Disease B patients: [symptom1=high, symptom2=medium, symptom3=low]
+```
+
+These patients present nearly identical symptoms but require different treatments. This is class overlap—and it confuses classifiers.
+
+### Overlap vs. Imbalance: A Critical Distinction
+
+**Class Imbalance:**
+- Problem: Unequal class distribution (e.g., 90% Class A, 10% Class B)
+- Impact: Classifier bias toward majority class
+- Solution: Resampling to balance ratios
+
+**Class Overlap:**
+- Problem: Classes occupy the same feature space
+- Impact: Ambiguous decision boundaries
+- Solution: Techniques that separate overlapping regions
+
+**Key Insight:** You can have class overlap even with perfectly balanced data. In fact, balanced overlapped data can be harder to classify than imbalanced non-overlapped data.
+
+## FairSample's Philosophy
+
+Most packages follow this approach:
+```
+Problem → Apply Technique → Hope It Works
+```
+
+FairSample promotes:
+```
+Problem → Quantify Overlap → Choose Technique → Validate Changes → Use Results
+```
+
+The difference is **informed decision-making based on overlap characteristics**.
+
+## Core Components
+
+### 1. Comprehensive Overlap Quantification
+
+Before handling overlap, measure it:
+```python
+from fairsample.complexity import ComplexityMeasures
+
+cm = ComplexityMeasures(X, y)
+
+# Instance overlap - how much instances overlap
+instance_measures = cm.get_all_complexity_measures(
+    measures=['N3', 'N4', 'kDN', 'CM', 'R-value']
+)
+
+# Feature overlap - how well features discriminate
+feature_measures = cm.get_all_complexity_measures(
+    measures=['F1', 'F2', 'F3', 'F4']
+)
+
+# Structural complexity - decision boundary complexity
+structural_measures = cm.get_all_complexity_measures(
+    measures=['T1', 'LSC', 'DBC']
+)
+```
+
+**Why multiple measures?** Different measures capture different aspects of overlap. N3 measures instance-level overlap, T1 captures structural complexity, F1 evaluates feature discriminability. Together they provide a complete picture.
+
+### 2. Overlap-Handling Techniques
+
+FairSample implements 14+ techniques specifically designed for overlap:
+
+**Undersampling Approaches:**
+- **RFCL** - Uses Random Forest to identify and remove overlapping majority instances
+- **NBUS** - Neighbourhood-based undersampling in overlap regions
+- **URNS** - Removes noisy samples causing overlap
+- **NUS** - Neighborhood undersampling
+
+**Oversampling Approaches:**
+- **SVDDWSMOTE** - Support Vector Data Description-based generation
+- **ODBOT** - Outlier detection-based oversampling
+
+**Hybrid Approaches:**
+- **EHSO** - Evolutionary algorithm balancing multiple objectives
+- **OSM** - Comprehensive overlap-based sampling
+
+**Clustering Approaches:**
+- **K-Means Undersampling** - Cluster-based overlap handling
+
+All techniques include:
+- Original paper citations
+- Parameter documentation
+- Usage guidance
+
+### 3. Multi-Technique Comparison
+
+Compare how different techniques affect *your specific overlap*:
+```python
+from fairsample.utils import compare_techniques
+
+results = compare_techniques(
+    X, y,
+    techniques=['RFCL', 'EHSO', 'NBUS'],
+    complexity_measures='basic'
+)
+
+# See impact on overlap metrics
+print(results[['technique', 'N3_before', 'N3_after', 'T1_before', 'T1_after']])
+```
+
+This reveals technique-specific trade-offs on your data.
+
+### 4. Validation Framework
+
+Verify that overlap handling actually improved your data:
+```python
+from fairsample import EHSO
+from fairsample.complexity import compare_pre_post_overlap
+
+# Apply technique
+sampler = EHSO(random_state=42)
+X_resampled, y_resampled = sampler.fit_resample(X, y)
+
+# Quantify structural changes
+comparison = compare_pre_post_overlap(X, y, X_resampled, y_resampled)
+
+print("Structural Impact:")
+for metric, change in comparison['improvements'].items():
+    print(f"  {metric}: {change:.2%} {'improvement' if change > 0 else 'degradation'}")
+```
+
+## Research Insights
+
+My research explored how overlap-handling techniques affect global structural complexity. Several key findings shaped FairSample's design:
+
+### Finding 1: Overlap Reduction ≠ Guaranteed Performance
+
+Some techniques dramatically reduce overlap metrics but fragment class structure, leading to poor generalization. 
+
+**Implication:** FairSample provides multi-dimensional evaluation rather than optimizing a single overlap metric.
+
+### Finding 2: Structural Side Effects
+
+Different techniques have different structural effects:
+- Some reduce instance overlap but increase structural complexity
+- Others balance multiple objectives
+- Trade-offs vary by dataset characteristics
+
+**Implication:** FairSample lets you measure these trade-offs before committing to a technique.
+
+### Finding 3: Dataset-Specific Solutions
+
+No technique works universally. What reduces overlap in one dataset might increase it in another.
+
+**Implication:** FairSample emphasizes diagnosis first, then technique selection based on your specific overlap profile.
+
+## Complete Workflow Example
+
+Here's a realistic classification problem with overlap:
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+
+# Load data with suspected overlap
+df = pd.read_csv('medical_diagnosis.csv')
+X = df.drop('diagnosis', axis=1)
+y = df['diagnosis']
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+
+# Step 1: Quantify overlap
+from fairsample.complexity import ComplexityMeasures
+
+cm = ComplexityMeasures(X_train, y_train)
+overlap_analysis = cm.analyze_overlap()
+
+print("Overlap Profile:")
+print(f"  Instance Overlap (N3): {overlap_analysis['N3']:.4f}")
+print(f"  (0.0 = no overlap, 1.0 = complete overlap)")
+
+# If N3 > 0.3, significant overlap exists
+
+# Step 2: Compare techniques
+from fairsample.utils import compare_techniques
+
+comparison = compare_techniques(
+    X_train, y_train,
+    techniques=['RFCL', 'EHSO', 'NBUS'],
+    complexity_measures='basic'
+)
+
+print("\nTechnique Comparison:")
+print(comparison[['technique', 'N3', 'training_time']])
+
+# Step 3: Apply best technique
+from fairsample import EHSO
+
+sampler = EHSO(random_state=42)
+X_resampled, y_resampled = sampler.fit_resample(X_train, y_train)
+
+# Step 4: Validate overlap reduction
+from fairsample.complexity import compare_pre_post_overlap
+
+validation = compare_pre_post_overlap(
+    X_train, y_train,
+    X_resampled, y_resampled
+)
+
+print("\nOverlap Changes:")
+print(validation['improvements'])
+
+# Step 5: Train classifier
+clf = RandomForestClassifier(random_state=42)
+clf.fit(X_resampled, y_resampled)
+
+# Step 6: Evaluate on test set
+y_pred = clf.predict(X_test)
+print("\nClassification Results:")
+print(classification_report(y_test, y_pred))
+```
+
+## When Class Overlap Matters
+
+Class overlap is particularly critical in:
+
+### Medical Diagnosis
+**Why overlap occurs:** Similar symptoms across different diseases
+**Impact:** Misdiagnosis can be life-threatening
+**FairSample application:** Separate overlapping symptom patterns
+
+### Fraud Detection
+**Why overlap occurs:** Fraudsters deliberately mimic legitimate behavior
+**Impact:** Miss fraud or block legitimate transactions
+**FairSample application:** Identify subtle differences in overlapping regions
+
+### Software Defect Prediction
+**Why overlap occurs:** Faulty and non-faulty code have similar metrics
+**Impact:** Miss critical bugs or waste time on false positives
+**FairSample application:** Handle overlapping code complexity metrics
+
+### Network Intrusion Detection
+**Why overlap occurs:** Attacks disguised as normal traffic
+**Impact:** Security breaches or excessive false alarms
+**FairSample application:** Distinguish attack patterns in overlapping traffic
+
+## 40+ Complexity Measures Explained
+
+FairSample integrates with PyCoL to provide comprehensive overlap analysis:
+
+### Feature Overlap Measures
+- **F1**: Maximum Fisher's discriminant ratio
+- **F2**: Volume of overlap region
+- **F3**: Maximum individual feature efficiency
+- **F4**: Collective feature efficiency
+
+### Instance Overlap Measures
+- **N3**: Error rate of nearest neighbor classifier
+- **N4**: Non-linearity of nearest neighbor classifier
+- **kDN**: KNN disagreement
+- **CM**: Class ambiguity
+
+### Structural Measures
+- **T1**: Fraction of hyperspheres covering data
+- **LSC**: Local set cardinality
+- **DBC**: Density of borderline points
+
+### Multiresolution Measures
+- **MRCA**: Multi-resolution cluster agreement
+- **C1**: Entropy of class proportions
+- **C2**: Imbalance ratio
+
+Each measure reveals different overlap characteristics.
+
+## Installation
+```bash
+pip install fairsample
+```
+
+**Requirements:**
+- Python 3.8+
+- NumPy, scikit-learn, SciPy, pandas
+- matplotlib, seaborn (for visualization)
+
+## Documentation
+
+Comprehensive documentation: https://mohduwaish59.github.io/fairsample/
+
+**Includes:**
+- API reference for all techniques
+- Complexity measures explained in detail
+- Parameter tuning guides
+- Research paper citations
+- Tutorial notebooks
+
+## Roadmap
+
+### Near-term
+1. **Visualization module** - PCA-based overlap visualization
+2. **Auto-technique selection** - Recommend based on overlap profile
+3. **More examples** - Domain-specific notebooks
+
+### Long-term
+1. **Benchmark suite** - Preprocessed datasets with known overlap
+2. **Advanced techniques** - Latest research integration
+3. **Deep learning** - Overlap handling in neural networks
+4. **Streaming data** - Online overlap handling
+
+## Contributing
+
+FairSample is open source (MIT License). 
+
+**Contribution areas:**
+- Implement new overlap-handling techniques
+- Add visualization utilities
+- Improve documentation
+- Create example notebooks
+- Report bugs or suggest features
+
+**Guidelines:**
+- Follow scikit-learn API conventions
+- Cite original research papers
+- Add tests for new techniques
+- Include docstring examples
+
+## Research Foundation
+
+FairSample implements techniques from:
+
+- **Vuttipittayamongkol & Elyan (2020)** - *Information Sciences*
+- **Das et al. (2014)** - *IEEE Transactions on Knowledge and Data Engineering*
+- **Santos et al. (2023)** - *Artificial Intelligence Review*
+- **Lorena et al. (2019)** - *ACM Computing Surveys*
+
+Full bibliography: [CITATIONS.md](https://github.com/mohdUwaish59/fairsample/blob/main/CITATIONS.md)
+
+## Resources
+
+- 📦 **PyPI**: `pip install fairsample`
+- 📖 **Documentation**: https://mohduwaish59.github.io/fairsample/
+- 💻 **GitHub**: https://github.com/mohdUwaish59/fairsample
+- 📚 **Citations**: [CITATIONS.md](https://github.com/mohdUwaish59/fairsample/blob/main/CITATIONS.md)
+- 🐛 **Issues**: Report bugs on GitHub
+- 🔧 **Pull Requests**: Contribute improvements
+
+## The Bottom Line
+
+Class overlap is a fundamental challenge in classification problems—one that's often more significant than class imbalance. Yet most tools and tutorials focus solely on balancing class ratios.
+
+FairSample addresses this gap by providing:
+
+1. **Diagnostic tools** - Quantify overlap with 40+ complexity measures
+2. **Treatment options** - 14+ research-backed overlap-handling techniques
+3. **Validation methods** - Verify that overlap actually reduced
+4. **Multi-dimensional evaluation** - See structural trade-offs
+
+The goal isn't to add another resampling library. It's to provide practical tools for the class overlap problem—backed by research, designed for practitioners.
+
+---
+
+**Questions or feedback?** Open an issue on GitHub or reach out directly.
+
+**Support this project:** ⭐ Star the repo | 🐛 Report issues | 🔧 Contribute | 📢 Share
+
+---
+
+*Tags: #MachineLearning #Classification #ClassOverlap #Python #OpenSource #DataScience*
