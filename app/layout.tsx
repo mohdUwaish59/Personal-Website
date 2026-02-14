@@ -35,7 +35,6 @@ export default function RootLayout({
             {children}
             <Toaster />
             <ChatWidgetContainer />
-            <ProjectsSheet />
           </ChatWidgetProvider>
         </ThemeProvider>
       </body>
