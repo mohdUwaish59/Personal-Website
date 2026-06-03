@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from '@sanity/types';
+import { defineType } from 'sanity';
 
 // Author schema
 const author = defineType({
@@ -6,26 +6,25 @@ const author = defineType({
   title: 'Author',
   type: 'document',
   fields: [
-    defineField({
+    {
       name: 'name',
       title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'text',
-      rows: 3,
-    }),
+    },
   ],
 });
 
@@ -35,13 +34,13 @@ const post = defineType({
   title: 'Blog Post',
   type: 'document',
   fields: [
-    defineField({
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -50,15 +49,14 @@ const post = defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
-      rows: 3,
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
@@ -66,38 +64,38 @@ const post = defineType({
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{ type: 'author' }],
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
-    }),
-    defineField({
+    },
+    {
       name: 'readingTime',
       title: 'Reading Time (minutes)',
       type: 'number',
       validation: (Rule) => Rule.required().min(1),
-    }),
-    defineField({
+    },
+    {
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'block',
           styles: [
             { title: 'Normal', value: 'normal' },
@@ -130,8 +128,8 @@ const post = defineType({
               },
             ],
           },
-        }),
-        defineArrayMember({
+        },
+        {
           type: 'image',
           options: {
             hotspot: true,
@@ -148,13 +146,13 @@ const post = defineType({
               title: 'Caption',
             },
           ],
-        }),
-        defineArrayMember({
+        },
+        {
           type: 'code',
           title: 'Code Block',
-        }),
+        },
       ],
-    }),
+    },
   ],
   preview: {
     select: {
