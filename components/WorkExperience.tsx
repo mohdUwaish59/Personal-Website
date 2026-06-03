@@ -17,8 +17,11 @@ const experiences = [
     period: "Sep 2025 - Present",
     description: "AI for Energy and Electricity demand prediction - Researching News and public sentiment analysis for predicting energy consumption patterns using deep learning techniques.",
     achievements: [
-      "Conduct Literature research on state-of-the-art techniques for sentiment analysis and energy consumption prediction."
-
+      "Conducted literature research on integrating news data into time series models for electricity price and demand forecasting, identifying gaps in cross-modal feature fusion approaches.",
+      "Developed web scraping pipelines to collect news articles from multiple Turkish news sources with automated neural machine translation to English.",
+      "Extracted NLP features including sentiment scores via VADER and BERT, named entities using fine-tuned BERT, and latent topics using LDA and BERTopic.",
+      "Designed and executed 15+ experiments integrating extracted news features with historical data across XGBoost, LSTM, and Transformer architectures.",
+      "Concluded that news-derived features negatively impacted model performance, attributing the result to the high volatility of electricity data outpacing the temporal resolution of news signals.",
     ],
     skills: ["Deep Learning", "NLP", "Sentiment Analysis", "Literature Research", "Technical Documentation", "Code Review", "CI/CD", "Docker", "ddev", "Git", "GitLab"],
     logo: "/company_logos/fraunhofer.jpg"
