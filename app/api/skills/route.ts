@@ -2,8 +2,18 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Skill from '@/lib/models/Skill';
 
+// Mark as dynamic to skip during build
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     
     const { searchParams } = new URL(request.url);
@@ -24,6 +34,13 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     const body = await request.json();
     const skill = await Skill.create(body);

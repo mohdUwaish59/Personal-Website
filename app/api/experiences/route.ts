@@ -2,8 +2,18 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Experience from '@/lib/models/Experience';
 
+// Mark as dynamic to skip during build
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     const experiences = await Experience.find().sort({ order: 1, createdAt: -1 });
     return NextResponse.json(experiences);
@@ -18,6 +28,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     const body = await request.json();
     const experience = await Experience.create(body);

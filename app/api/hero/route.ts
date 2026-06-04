@@ -2,8 +2,19 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Hero from '@/lib/models/Hero';
 
+// Mark as dynamic to skip during build
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
+    // Check if MongoDB is configured
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     // Get the first (and should be only) hero document
     const hero = await Hero.findOne();
@@ -27,6 +38,14 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   try {
+    // Check if MongoDB is configured
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     const body = await request.json();
     

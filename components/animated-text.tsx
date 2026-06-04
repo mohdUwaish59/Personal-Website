@@ -61,12 +61,14 @@ export function AnimatedText({ text, className = "", once = true, delay = 0 }: A
       variants={container}
       initial="hidden"
       animate={controls}
+      suppressHydrationWarning
     >
       {words.map((word, index) => (
         <motion.span
           key={index}
           className="mr-1 inline-block"
           variants={child}
+          suppressHydrationWarning
         >
           {word}
         </motion.span>

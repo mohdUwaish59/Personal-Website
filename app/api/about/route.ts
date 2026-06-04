@@ -2,8 +2,18 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import About from '@/lib/models/About';
 
+// Mark as dynamic to skip during build
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     // Get the first (and should be only) about document
     const about = await About.findOne();
@@ -27,6 +37,13 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { error: 'MongoDB not configured' },
+        { status: 503 }
+      );
+    }
+
     await connectDB();
     const body = await request.json();
     
